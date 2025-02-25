@@ -4,7 +4,7 @@ export class Order {
           WELCOMING: () => {
               let aReturn = [];
               this.stateCur = this.OrderState.SELECTING_ITEM;
-              aReturn.push("🍽️ Welcome to Dream Bites! What would you like to order? (Pizza/Burger)");
+              aReturn.push("🍽️ Welcome to Dreamy Pizzeria and Burger Joint! What would you like to order? (Pizza/Burger)");
               return aReturn;
           },
           SELECTING_ITEM: (sInput) => {
