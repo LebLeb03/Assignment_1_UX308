@@ -41,18 +41,24 @@ describe("Food Ordering Chatbot Tests", function() {
         const aResults = oOrder.handleInput("coke");
         expect(aResults[0]).toContain("📝 Order Summary: medium pizza with cheese, Drink: coke");
     });
-    it("test yes", function() {
-        const oOrder = new Order("999-999-9999");
-        oOrder.handleInput("hello");
+
+    it("should finalize the order when confirmed", function() {
+        oOrder.handleInput("");
+        oOrder.handleInput("pizza");
+        oOrder.handleInput("medium");
+        oOrder.handleInput("cheese");
+        oOrder.handleInput("coke");
         const aResults = oOrder.handleInput("yes");
-        expect(aResults[0]).toBe("Your rapid test is reserved under the phone number 999-999-9999");
+        expect(aResults[0]).toBe("🎉 Your order has been placed! Enjoy your meal!");
     });
-    it("test no", function() {
-        const oOrder = new Order("999-999-9999");
-        oOrder.handleInput("hello");
+
+    it("should cancel the order if the user says no", function() {
+        oOrder.handleInput("");
+        oOrder.handleInput("pizza");
+        oOrder.handleInput("medium");
+        oOrder.handleInput("cheese");
+        oOrder.handleInput("coke");
         const aResults = oOrder.handleInput("no");
-        expect(aResults[0]).toBe("Thanks for trying our reservation system");
+        expect(aResults[0]).toBe("❌ Order cancelled. Let us know if you change your mind!");
     });
-  });
-  
-  
+});
